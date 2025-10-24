@@ -1,7 +1,7 @@
 import json
 from django.http import HttpResponseBadRequest, JsonResponse
 from django.shortcuts import get_object_or_404, render
-from django.views.decorators.csrf import csrf_exempt  # 👈 agrega esto
+from django.views.decorators.csrf import csrf_exempt  
 from todos.models import Todo
 
 
