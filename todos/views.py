@@ -1,7 +1,8 @@
 import json
+
 from django.http import HttpResponseBadRequest, JsonResponse
 from django.shortcuts import get_object_or_404, render
-from django.views.decorators.csrf import csrf_exempt  
+
 from todos.models import Todo
 
 
@@ -9,8 +10,8 @@ def home(request):
     return render(request, "home.html")
 
 
-@csrf_exempt 
 def todos(request):
+    # request.is_ajax() is deprecated since django 3.1
     is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
 
     if is_ajax:
@@ -27,8 +28,8 @@ def todos(request):
         return HttpResponseBadRequest('Invalid request')
 
 
-@csrf_exempt
 def todo(request, todoId):
+    # request.is_ajax() is deprecated since django 3.1
     is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
 
     if is_ajax:
